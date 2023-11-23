@@ -1,9 +1,9 @@
 0x04. Loops, conditions and parsing
 ===================================
-DevOps
+**`DevOps
 Shell
 Bash
-Scripting
+Scripting`**
 
 -   By Sylvain Kalache
 -   Weight: 1
