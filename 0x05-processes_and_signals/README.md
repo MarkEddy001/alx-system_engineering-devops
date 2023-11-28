@@ -3,8 +3,6 @@
 
 -   By Sylvain Kalache
 -   Weight: 1
--   Ongoing project - started 01-14-2022, must end by 01-15-2022 (in about 11 hours) - you're done with 0% of tasks.
--   Checker was released at 01-14-2022 12:00 PM
 -   QA review fully automated.
 
 About Bash projects
