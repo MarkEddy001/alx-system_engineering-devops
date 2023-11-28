@@ -6,14 +6,6 @@
 -   Ongoing second chance project - started 01-18-2022, must end by 01-22-2022 (in 3 days) - you're done with 0% of tasks.
 -   QA review fully automated.
 
-#### In a nutshell...
-
--   **Auto QA review:** 1.0/24 mandatory & 0.0/9 optional
--   **Altogether:**  **4.17%**
-    -   Mandatory: 4.17%
-    -   Optional: 0.0%
-    -   Calculation:  4.17% + (4.17% * 0.0%)  == **4.17%**
-
 Concepts
 --------
 
