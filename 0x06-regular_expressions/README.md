@@ -3,7 +3,6 @@
 
 -   By Sylvain Kalache
 -   Weight: 1
--   Ongoing second chance project - started 01-18-2022, must end by 01-22-2022 (in 3 days) - you're done with 0% of tasks.
 -   QA review fully automated.
 
 Concepts
