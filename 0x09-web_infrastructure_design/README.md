@@ -27,7 +27,7 @@ At the end of this project, you are expected to be able to:
 
 ### Task 0: Simple Web Stack
 
-- [Link to Whiteboard Diagram]([insert_link](https://app.diagrams.net/?src=about#G1XO0KDAHB8TPMR4WrCUmKERcAVKQ6ljQE))
+- [Link to Whiteboard Diagram]([https://app.diagrams.net/?src=about#G1XO0KDAHB8TPMR4WrCUmKERcAVKQ6ljQE])
 - [Link to GitHub Repository](insert_link)
 
 ### Task 1: Distributed Web Infrastructure
