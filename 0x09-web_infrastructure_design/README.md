@@ -7,8 +7,6 @@ This project involves designing and explaining various web infrastructure setups
 ## Team Members
 
 - Wanyoike Mark Edwards
-- [Team Member 2]
-- [Team Member 3]
 
 ## Project Schedule
 
