@@ -23,42 +23,7 @@ At the end of this project, you are expected to be able to:
 - Understand system redundancy.
 - Familiarize yourself with acronyms such as LAMP, SPOF, QPS.
 
-## Tasks
-
-### Task 0: Simple Web Stack
-
-- [Link to Whiteboard Diagram](insert_link)
-- [Link to GitHub Repository](insert_link)
-
-### Task 1: Distributed Web Infrastructure
-
-- [Link to Whiteboard Diagram](insert_link)
-- [Link to GitHub Repository](insert_link)
-
-### Task 2: Secured and Monitored Web Infrastructure
-
-- [Link to Whiteboard Diagram](insert_link)
-- [Link to GitHub Repository](insert_link)
-
-### Task 3: Scale Up (Advanced)
-
-- [Link to Whiteboard Diagram](insert_link)
-- [Link to GitHub Repository](insert_link)
-
-## How to Use This Repository
-
-Each task folder contains the whiteboard diagram screenshot and the corresponding GitHub repository link.
-
-## Important Note
-
-- The whiteboard diagrams were presented in front of a mentor, staff, or student without the use of a computer or notes.
-- For detailed explanations, refer to the whiteboard sessions and the respective GitHub repositories.
-
-## Copyright
-
-© 2023 ALX. All rights reserved.
-
-# Web Infrastructure Design README
+# Tasks
 
 ## Single Server Web Infrastructure (www.foobar.com)
 
@@ -204,3 +169,15 @@ This section introduces a cluster configuration for load balancing and redundanc
    - Issue: Identical configurations may lead to simultaneous vulnerabilities.
    - Mitigation: Implement diverse configurations and regular security audits.
 
+## How to Use This Repository
+
+Each task folder contains the whiteboard diagram screenshot and the corresponding GitHub repository link.
+
+## Important Note
+
+- The whiteboard diagrams were presented in front of a mentor, staff, or student without the use of a computer or notes.
+- For detailed explanations, refer to the whiteboard sessions and the respective GitHub repositories.
+
+## Copyright
+
+© 2023 ALX. All rights reserved.
