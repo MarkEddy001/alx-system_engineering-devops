@@ -1,5 +1,4 @@
 #This puppet mainfest installs flask from pip3
-
 package { 'python3-pip':
   ensure => 'installed',
 }
