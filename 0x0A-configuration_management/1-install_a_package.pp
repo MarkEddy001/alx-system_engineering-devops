@@ -1,10 +1,30 @@
-#This puppet mainfest installs flask from pip3
-package { 'python3-pip':
-  ensure => 'installed',
+# Using Puppet, install flask from pip3.
+
+# Requirements:
+
+# Install flask
+# Version must be 2.1.0
+
+package {
+    'python3.8':
+    ensure  => '3.8.10',
 }
 
-exec { 'install flask':
-  command => '/usr/bin/pip3 install flask==2.1.0',
-  path    => ['/usr/bin'],
-  unless  => '/usr/bin/pip3 freeze | /bin/grep Flask | /bin/grep 2.1.0',
+package {
+    'python3-pip':
+    ensure  => installed,
+}
+
+package {
+    'flask':
+    ensure   => '2.1.0',
+    require  => Package['python3-pip'],
+    provider => 'pip',
+}
+
+package {
+    'Werkzeug':
+    ensure   => '2.1.0',
+    require  => Package['python3-pip'],
+    provider => 'pip',
 }
