@@ -2,3 +2,4 @@
 # Start Apache so as to return a
 # page conatining Hello Holberton
 service apache2 start
+echo "Hello Holberton" > /var/www/html/index.html
