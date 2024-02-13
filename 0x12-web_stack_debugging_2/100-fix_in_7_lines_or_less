@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
-
-apt-get update
-apt-get install -y nginx
-sed -i 's/80 default_server/8080 default_server/g' /etc/nginx/sites-available/default
-usermod -aG www-data nginx
-chown -R nginx:nginx /var/lib/nginx /var/log/nginx /run/nginx.pid /var/www/html
-service nginx start
-
+# Fixes server bug
+chmod 644 /etc/nginx/nginx.conf
+sed -Ei 's/\s*#?\s*user .*/user nginx;/' /etc/nginx/nginx.conf
+sed -Ei 's/(listen (\[::\]:)?80) /\180 /' /etc/nginx/sites-enabled/default
+pkill apache2
+su nginx -s /bin/bash -c 'service nginx restart'
