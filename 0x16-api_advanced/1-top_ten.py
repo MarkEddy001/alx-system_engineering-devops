@@ -1,20 +1,21 @@
 #!/usr/bin/python3
-"""
-    Uses reddit API to get 10 hot posts
-"""
+"""Function to query subscribers on a given Reddit subreddit."""
+import json
 import requests
 
 
 def top_ten(subreddit):
-    """Get 10 hot posts"""
-    url = f"https://www.reddit.com/r/{subreddit}/hot.json?limit=10"
-    headers = {'user-agent': 'request'}
-    response = requests.get(url, headers=headers, allow_redirects=False)
-
-    if response.status_code != 200:
-        print(None)
+    url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
+    headers = {
+        "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
+    }
+    params = {
+        "limit": 10
+    }
+    response = requests.get(url, headers=headers, params=params,
+                            allow_redirects=False)
+    if response.status_code == 404:
+        print("None")
         return
-
-    data = response.json().get("data").get("children")
-    top_10_posts = "\n".join(post.get("data").get("title") for post in data)
-    print(top_10_posts)
+    results = response.json().get("data")
+    [print(c.get("data").get("title")) for c in results.get("children")]
