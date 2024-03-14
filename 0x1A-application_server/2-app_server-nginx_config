@@ -1,26 +1,19 @@
-server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
+#!/usr/bin/env bash
+# Configure Nginx to serve page from /airbnb-onepage/
 
-    # Use IP of server as domain name
-    server_name 35.153.66.223;
+sudo apt-get update
+sudo apt-get install -y nginx
 
-    # Customize HTTP response header
-    add_header X-Served-By 426807-web-01;
+sudo mkdir -p /data/web_static/releases/test/
+sudo mkdir -p /data/web_static/shared/
 
-    # Serve /airbnb-onepage/ route on AirBnB_clone_v3
-    location /airbnb-onepage/ {
-        proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
-    }
+echo "Hello HBNB!" | sudo tee /data/web_static/releases/test/index.html
 
-    # Serve /number_odd_or_even/ route on AirBnB_clone_v2
-    location ~ /airbnb-dynamic/number_odd_or_even/\d+$ {
-        proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
-    }
+sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 
-    error_page 404 /404.html;
-    location /404 {
-        root /var/www/html;
-        internal;
-    }
-}
+sudo chown -R ubuntu:ubuntu /data/
+
+sudo sed -i '37i\\tlocation /airbnb-onepage/ {\n\t\talias /data/web_static/current/;\n\t}\n' /etc/nginx/sites-available/default
+
+sudo service nginx restart
+
