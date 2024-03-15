@@ -1,25 +1,19 @@
-server {
-    listen 80 default_server;
-        error_page 404 /404.html;
-        location = /404.html {
-                root /var/www/html;
-                internal;
-        }
-    listen [::]:80 ipv6only=on  default_server;
+#!/usr/bin/env bash
+# Configure Nginx to serve page from /airbnb-onepage/
 
-    root /var/www/html;
-    index index.html index.htm index.nginx-debian.html;
+sudo apt-get update
+sudo apt-get install -y nginx
 
-    server_name localhost;
-    add_header X-Served-By $hostname;
-        rewrite ^/redirect_me https://github.com/Nyakuji permanent;
+sudo mkdir -p /data/web_static/releases/test/
+sudo mkdir -p /data/web_static/shared/
 
-location /airbnb-onepage/ {
-                include proxy_params;
-                proxy_pass http://0.0.0.0:5000/airbnb-onepage/;
-        }
+echo "Hello HBNB!" | sudo tee /data/web_static/releases/test/index.html
 
-    location / {
-        try_files $uri $uri/ =404;
-    }
-}
+sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
+
+sudo chown -R ubuntu:ubuntu /data/
+
+sudo sed -i '37i\\tlocation /airbnb-onepage/ {\n\t\talias /data/web_static/current/;\n\t}\n' /etc/nginx/sites-available/default
+
+sudo service nginx restart
+
