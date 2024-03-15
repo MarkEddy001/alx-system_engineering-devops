@@ -1,0 +1,35 @@
+server {
+    listen 80 default_server;
+        error_page 404 /404.html;
+        location = /404.html {
+                root /var/www/html;
+                internal;
+        }
+    listen [::]:80 ipv6only=on  default_server;
+
+    root /var/www/html;
+    index index.html index.htm index.nginx-debian.html;
+
+    server_name localhost;
+    add_header X-Served-By $hostname;
+        rewrite ^/redirect_me https://github.com/Nyakuji permanent;
+
+location /airbnb-onepage/ {
+                include proxy_params;
+                proxy_pass http://0.0.0.0:5000/airbnb-onepage/;
+        }
+
+location /airbnb-dynamic/number_odd_or_even/ {
+                include proxy_params;
+                proxy_pass http://0.0.0.0:5001/number_odd_or_even/;
+        }
+
+location /api/ {
+                include proxy_params;
+                proxy_pass http://0.0.0.0:5002/api/;
+        }
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+}
