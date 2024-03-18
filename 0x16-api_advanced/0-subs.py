@@ -5,27 +5,20 @@ Queries the Reddit API
 """
 import requests
 
-
 def number_of_subscribers(subreddit):
-    """
-    Gets the number of subscribers of a subreddit.
+    url = f"https://www.reddit.com/r/{subreddit}/about.json"
+    headers = {"User-Agent": "MyRedditBot/1.0 by YourUsername"}
 
-    """
     try:
-        response = requests.get(
-            f"https://www.reddit.com/r/{subreddit}/about.json",
-            headers={"User-Agent": "GetSubscriberCount"},
-            allow_redirects=False
-        )
-        response.raise_for_status()
-
-        data = response.json().get('data')
-
-        if data and 'subscribers' in data:
-            return data['subscribers']
-        else:
-            return 0
-
-    except requests.exceptions.RequestException as e:
-        print(f"An error occurred: {e}")
+        response = requests.get(url, headers=headers)
+        data = response.json()
+        return data["data"]["subscribers"]
+    except (requests.RequestException, KeyError):
         return 0
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        print("Please pass an argument for the subreddit to search.")
+    else:
+        print("{:d}".format(number_of_subscribers(sys.argv[1])))
+
