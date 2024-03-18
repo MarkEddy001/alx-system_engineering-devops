@@ -1,21 +1,23 @@
 #!/usr/bin/python3
-"""Function to query subscribers on a given Reddit subreddit."""
+"""
+Queries the Reddit API
+
+"""
 import json
 import requests
 
 
 def top_ten(subreddit):
-    url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
-    headers = {
-        "User-Agent": "linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)"
-    }
-    params = {
-        "limit": 10
-    }
-    response = requests.get(url, headers=headers, params=params,
-                            allow_redirects=False)
-    if response.status_code == 404:
-        print("None")
-        return
-    results = response.json().get("data")
-    [print(c.get("data").get("title")) for c in results.get("children")]
+    """Gets the top ten topics of subscribers of a subreddit"""
+    response = requests.get("https://www.reddit.com/r/{}/top.json?limit=10"
+                            .format(subreddit),
+                            headers={"User-Agent": "GetHotTopics"},
+                            allow_redirects=False).json()
+
+    data = response.get('data')
+    if not data:
+        print(None)
+    else:
+        titles = []
+        for child in data['children']:
+            print(child['data']['title'])
