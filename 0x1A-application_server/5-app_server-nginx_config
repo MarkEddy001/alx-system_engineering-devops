@@ -99,7 +99,7 @@ server {
         }
 
         location /redirect_me {
-                return 301 https://www.github.com/ynot93;
+                return 301 https://www.github.com/MarkEddy001;
         }
 
         # pass PHP scripts to FastCGI server
