@@ -1,26 +1,23 @@
 #!/usr/bin/python3
-"""Function to query subscribers on a given subreddit."""
+"""A module that retrieves the number of subscribers of a subreddit."""
+
+
 import requests
 
 
 def number_of_subscribers(subreddit):
-    url = "https://www.reddit.com/r/{}/about.json".format(subreddit)
-    headers = {
-        'User-Agent': 'linux:0x16.api.advanced:v1.0.0 (by /u/bdov_)'
-    }
-    response = requests.get(url, headers=headers, allow_redirects=False)
-    
+    """Returns the number of subscribers (total subscribers)
+        for a given subreddit. If an invalid subreddit is given,
+        the function will return 0"""
+
+    headers = {"User-Agent": "Middle-Chipmunk-3601"}
+    response = requests.get(
+        "https://www.reddit.com/r/{}/about.json".format(subreddit),
+        headers=headers,
+        allow_redirects=False
+    )
     if response.status_code == 200:
-        try:
-            data = response.json()
-            if 'data' in data:
-                return data['data']['subscribers']
-            else:
-                print("Invalid JSON response - 'data' key not found")
-                return 0
-        except ValueError:
-            print("Invalid JSON response")
-            return 0
+        result = response.json().get("data")
+        return result.get("subscribers")
     else:
-        print("Request failed with status code: {}".format(response.status_code))
         return 0
