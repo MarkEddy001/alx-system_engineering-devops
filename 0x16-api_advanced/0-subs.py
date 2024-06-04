@@ -1,9 +1,7 @@
 #!/usr/bin/python3
 """A module that retrieves the number of subscribers of a subreddit."""
 
-
 import requests
-
 
 def number_of_subscribers(subreddit):
     """Returns the number of subscribers (total subscribers)
@@ -11,13 +9,20 @@ def number_of_subscribers(subreddit):
         the function will return 0"""
 
     headers = {"User-Agent": "Middle-Chipmunk-3601"}
-    response = requests.get(
-        "https://www.reddit.com/r/{}/about.json".format(subreddit),
-        headers=headers,
-        allow_redirects=False
-    )
-    if response.status_code == 200:
+    try:
+        response = requests.get(
+            "https://www.reddit.com/r/{}/about.json".format(subreddit),
+            headers=headers,
+            allow_redirects=False
+        )
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(e)
+        return 0
+
+    try:
         result = response.json().get("data")
         return result.get("subscribers")
-    else:
+    except ValueError:
+        print("Error: Unable to parse JSON response")
         return 0
