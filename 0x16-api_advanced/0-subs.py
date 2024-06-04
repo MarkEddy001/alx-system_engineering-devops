@@ -22,7 +22,10 @@ def number_of_subscribers(subreddit):
 
     try:
         result = response.json().get("data")
-        return result.get("subscribers")
+        subscribers = result.get("subscribers")
+        if subscribers is not None:
+            print("OK")
+        return subscribers
     except ValueError:
         print("Error: Unable to parse JSON response")
         return 0
