@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Send a signal to the master Gunicorn process to gracefully reload its workers
+
+pgrep gunicorn | xarge kill -HUP
