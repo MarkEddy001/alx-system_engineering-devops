@@ -1,0 +1,45 @@
+# Serve the page from the route /airbnb-onepage/ in the flask app running on port 5000
+# Serve the page from the route /number_odd_or_even/<int:n> in the flask app running on port 5001
+
+# The block to proxy requests to the process listening on localhost
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name localhost;
+
+    location /airbnb-onepage {
+        add_header X-Served-By '426807-web-01';
+	    include proxy_params;
+	    proxy_pass http://localhost:5000;
+    }
+
+    location ~ /airbnb-dynamic/number_odd_or_even/(\d+) {
+	    add_header X-Served-By '426807-web-01';
+        include proxy_params;
+	    rewrite ^/airbnb-dynamic/number_odd_or_even/(.*) /number_odd_or_even/$1 break;
+ 	    proxy_pass http://localhost:5001;
+    }
+}
+
+
+# The block to proxy requests to the process listening on the public IP address 52.91.117.34
+server {
+    listen 80;
+    listen [::]:80;
+    server_name 52.91.117.34;
+
+    location /airbnb-onepage {
+        add_header X-Served-By '426807-web-01';
+	    include proxy_params;
+	    proxy_pass http://localhost:5000;
+    }
+
+
+    location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+	    add_header X-Served-By '426807-web-01';
+        include proxy_params;
+	    rewrite ^/airbnb-dynamic/number_odd_or_even/(.*) /number_odd_or_even/$1 break;
+ 	    proxy_pass http://localhost:5001;
+    }
+
+}

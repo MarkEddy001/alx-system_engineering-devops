@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ![img](https://assets.imaginablefutures.com/media/images/ALX_Logo.max-200x150.png)
   > Application Server
 
@@ -37,10 +36,6 @@ Running your Python web application using Gunicorn instead of running the module
 2. [How to Serve a Flask Application with Gunicorn and Nginx on Ubuntu 16.04](https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-16-04) (As mentioned in the video, do not install Gunicorn using `virtualenv`, just install everything globally)
 3. [Running gunicorn](https://docs.gunicorn.org/en/latest/run.html)
 4. [Be careful the way Flask handles slashes](https://werkzeug.palletsprojects.com/en/0.14.x/routing/) in [route](https://flask.palletsprojects.com/en/1.0.x/api/#flask.Flask.route) - `strict_slashes`
-5. [Upstart documentation](https://doc.ubuntu-fr.org/upstart)...
-=======
-## Alx-system Engineering & DevOps
-![](https://www.codemotion.com/magazine/wp-content/uploads/2020/09/devops-1024x527.png)
+5. [Upstart documentation](https://doc.ubuntu-fr.org/upstart)
 
-At ALX School `we do hard things`, the goal is not to be a good student rather the key goal is to be a good software Engineer. ALX_africa are on a mission to identify, develop and equip Africa’s next 3 million leaders. We have projects everyday that we have to push on GitHub in order for an automatic review to be done by `Ubuntu 20.04 LTS`. This repository contains directories each corresponding to a software engineering or DevOps project. These projects are part of the ALX Software Engineering year 1 curriculum. In these projects, we cover everything from the basics of the Linux Shell, Bash commands, Bash scripting, networking, APIs, and web-stack debugging to more advanced topics.
->>>>>>> b30484b0a3b220ef1d42977718c3fd443df9d4c3
+

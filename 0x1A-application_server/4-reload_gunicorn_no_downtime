@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+# This script gracefully restarts Gunicorn without service interruption
+
+# Assuming Gunicorn is managed by systemd (common in production environments)
+# Replace 'your-gunicorn-service' with the actual service name of Gunicorn
+sudo systemctl reload your-gunicorn-service.service
+
+# Check if Gunicorn restarted successfully and print OK if it did
+if systemctl is-active --quiet your-gunicorn-service.service; then
+    echo "OK"
+else
+    echo "NOk"
+fi
